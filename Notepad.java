@@ -11,12 +11,14 @@ import java.net.URISyntaxException;
 import java.util.Objects;
 
 import javax.swing.*;
-public class Notepad implements ActionListener{  
+public class Notepad implements ActionListener{ 
+
 JFrame f;  
 JMenuBar menuBar;
 JMenu m1,m2,m3,m4,m5;
 JMenuItem m1t1,m1t2,m1t3,m1t4,m2t1,m2t2,m2t3,m2t4,m3t1,m3t2,m4t1,m4t2,m5t1,m5t2,m5t3;
 JTextArea area;
+
 Notepad(){  
 f=new JFrame("Notepad");
           
@@ -36,8 +38,8 @@ m2t1 = new JMenuItem("Undo");
 m2t2 = new JMenuItem("Redo");
 m2t3 = new JMenuItem("Cut");
 m2t4 = new JMenuItem("Copy");
-m3t1 = new JMenuItem("Font Style");
-m3t2 = new JMenuItem("Font Size");
+m3t1 = new JMenuItem("Font");
+m3t2 = new JMenuItem("Word Wrap");
 m4t1 = new JMenuItem("Status Bar");
 m4t2 = new JMenuItem("Toolbars");
 m5t1 = new JMenuItem("About Us");
@@ -54,9 +56,10 @@ m5.add(m5t1);m5.add(m5t2);m5.add(m5t3);
 
 menuBar.add(m1);menuBar.add(m2);menuBar.add(m3);menuBar.add(m4);menuBar.add(m5);
 
+
 f.setJMenuBar(menuBar);
 f.add(area,BorderLayout.CENTER);
-          
+
 m1t1.addActionListener(this);
 m1t2.addActionListener(this);
 m1t3.addActionListener(this);
@@ -117,9 +120,9 @@ public void actionPerformed(ActionEvent e) {
     }else if(e.getSource() == m2t4){
 
     }else if(e.getSource() == m3t1){
-
+       new Font();
     }else if(e.getSource() == m3t2){
-
+        
     }else if(e.getSource() == m4t1){
 
     }else if(e.getSource() == m4t2){
