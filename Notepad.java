@@ -1,6 +1,12 @@
 import java.awt.BorderLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.util.Objects;
+import java.util.Scanner;
 
 import javax.swing.*;
 public class Notepad implements ActionListener{  
@@ -76,8 +82,43 @@ new Notepad();
 
 @Override
 public void actionPerformed(ActionEvent e) {
-    if(e.getSource() == m1t4){
+    if(e.getSource() == m1t1){
+        new Notepad();
+    }else if(e.getSource() == m1t2){
+        String name = JOptionPane.showInputDialog("file directory");
+        try {
+            area.read(new InputStreamReader(Objects.requireNonNull(
+                    getClass().getResourceAsStream(name))), null);
+        }
+        catch (IOException ef) {
+            ef.printStackTrace();
+        }
+    }else if(e.getSource() == m1t3){
+
+    }else if(e.getSource() == m1t4){
         System.exit(0);
+    }else if(e.getSource() == m2t1){
+
+    }else if(e.getSource() == m2t2){
+
+    }else if(e.getSource() == m2t3){
+
+    }else if(e.getSource() == m2t4){
+
+    }else if(e.getSource() == m3t1){
+
+    }else if(e.getSource() == m3t2){
+
+    }else if(e.getSource() == m4t1){
+
+    }else if(e.getSource() == m4t2){
+
+    }else if(e.getSource() == m5t1){
+
+    }else if(e.getSource() == m5t1){
+
+    }else{
+
     }
 }  
 }  
