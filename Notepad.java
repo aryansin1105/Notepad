@@ -1,12 +1,14 @@
 import java.awt.BorderLayout;
+import java.awt.Desktop;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.io.File;
-import java.io.FileNotFoundException;
+import java.io.BufferedWriter;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.net.URI;
+import java.net.URISyntaxException;
 import java.util.Objects;
-import java.util.Scanner;
 
 import javax.swing.*;
 public class Notepad implements ActionListener{  
@@ -34,7 +36,7 @@ m2t1 = new JMenuItem("Undo");
 m2t2 = new JMenuItem("Redo");
 m2t3 = new JMenuItem("Cut");
 m2t4 = new JMenuItem("Copy");
-m3t1 = new JMenuItem("Word Wrap On/Off");
+m3t1 = new JMenuItem("Font Style");
 m3t2 = new JMenuItem("Font Size");
 m4t1 = new JMenuItem("Status Bar");
 m4t2 = new JMenuItem("Toolbars");
@@ -94,7 +96,16 @@ public void actionPerformed(ActionEvent e) {
             ef.printStackTrace();
         }
     }else if(e.getSource() == m1t3){
-
+        String name = JOptionPane.showInputDialog("filename");
+        try {
+            FileWriter Writer = new FileWriter(name);
+            Writer.write(area.getText());
+            Writer.close();
+            System.out.println("Successfully written.");
+        }
+        catch (IOException ei) {
+            ei.printStackTrace();
+        }
     }else if(e.getSource() == m1t4){
         System.exit(0);
     }else if(e.getSource() == m2t1){
@@ -114,11 +125,30 @@ public void actionPerformed(ActionEvent e) {
     }else if(e.getSource() == m4t2){
 
     }else if(e.getSource() == m5t1){
-
-    }else if(e.getSource() == m5t1){
-
+        area.setText("This is editing gui program developed by java");
+    }else if(e.getSource() == m5t2){
+        String feed = JOptionPane.showInputDialog("Feedback");
+        BufferedWriter out;
+        try {
+            out = new BufferedWriter(new FileWriter("Feedback", true));
+            out.write(feed+"\n");
+            out.close();
+        } catch (IOException e1) {
+            e1.printStackTrace();
+        }
     }else{
-
+        if (Desktop.isDesktopSupported()) {
+      
+         Desktop desktop = Desktop.getDesktop();
+         try {
+            URI uri = new URI("https://en.wikipedia.org/wiki/Windows_Notepad");
+            desktop.browse(uri);
+         } catch (IOException excp) {
+            excp.printStackTrace();
+         } catch (URISyntaxException excp) {
+            excp.printStackTrace();
+         }
+      }
     }
 }  
 }  
